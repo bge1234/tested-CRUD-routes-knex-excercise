@@ -20,7 +20,7 @@ describe('Movies CRUD Routes', function() {
     return knex.seed.run(knex.config);
   });
 
-  it('should use knex migrations', function () {
+  xit('should use knex migrations', function () {
     return knex('knex_migrations').select().then(function (migrations) {
       moviesMigration = migrations[0].name.split('_');
       assert.equal(moviesMigration[1], 'create');
@@ -30,26 +30,26 @@ describe('Movies CRUD Routes', function() {
       assert.equal(reviewsMigration[2], 'reviews.js');
     })
   })
-  it('should get all movies from the Movies db', function () {
+  xit('should get all movies from the Movies db', function () {
     return Movies().select().then(function (movies) {
       movies.should.have.length(3);
     });
   });
-  it('should create a movie', function () {
+  xit('should create a movie', function () {
     return Movies().insert(theMovie).then(function (results) {
       return Movies().select().then(function (movies) {
         movies.should.have.length(4);
       })
     })
   });
-  it('should find a movie', function () {
+  xit('should find a movie', function () {
     return Movies().where('title', 'Adventures in CRUD').first().then(function (movie) {
       assert.equal(movie.title, 'Adventures in CRUD');
       assert.equal(movie.director, 'Martha Berner');
       movie.should.have.property('id');
     })
   });
-  it('should update a movie', function () {
+  xit('should update a movie', function () {
     return Movies().where('title', 'Spiral Like A Boss').update({
           director: 'The Nmuta Jones',
           title: 'Spiraling Like A Boss'
@@ -65,7 +65,7 @@ describe('Movies CRUD Routes', function() {
       })
     });
   });
-  it('should delete a movie', function () {
+  xit('should delete a movie', function () {
     return Movies().where('title', 'The Great Beyond').first().del().then(function (results) {
       return Movies().select().then(function (movies) {
         movies.should.have.length(2);
