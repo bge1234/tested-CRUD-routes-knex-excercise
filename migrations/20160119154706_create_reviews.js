@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
     table.increments();
     table.integer('movie_id');
     table.string('author');
+    table.string('title');
     table.integer('rating');
   })
 };
