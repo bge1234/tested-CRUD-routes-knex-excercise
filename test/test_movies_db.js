@@ -30,26 +30,26 @@ describe('Movies CRUD Routes', function() {
       assert.equal(reviewsMigration[2], 'reviews.js');
     })
   })
-  xit('should get all movies from the Movies db', function () {
+  it('should get all movies from the Movies db', function () {
     return Movies().select().then(function (movies) {
       movies.should.have.length(3);
     });
   });
-  xit('should create a movie', function () {
+  it('should create a movie', function () {
     return Movies().insert(theMovie).then(function (results) {
       return Movies().select().then(function (movies) {
         movies.should.have.length(4);
       })
     })
   });
-  xit('should find a movie', function () {
+  it('should find a movie', function () {
     return Movies().where('title', 'Adventures in CRUD').first().then(function (movie) {
       assert.equal(movie.title, 'Adventures in CRUD');
       assert.equal(movie.director, 'Martha Berner');
       movie.should.have.property('id');
     })
   });
-  xit('should update a movie', function () {
+  it('should update a movie', function () {
     return Movies().where('title', 'Spiral Like A Boss').update({
           director: 'The Nmuta Jones',
           title: 'Spiraling Like A Boss'
@@ -65,7 +65,7 @@ describe('Movies CRUD Routes', function() {
       })
     });
   });
-  xit('should delete a movie', function () {
+  it('should delete a movie', function () {
     return Movies().where('title', 'The Great Beyond').first().del().then(function (results) {
       return Movies().select().then(function (movies) {
         movies.should.have.length(2);
