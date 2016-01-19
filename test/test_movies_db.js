@@ -20,7 +20,7 @@ describe('Movies CRUD Routes', function() {
     return knex.seed.run(knex.config);
   });
 
-  xit('should use knex migrations', function () {
+  it('should use knex migrations', function () {
     return knex('knex_migrations').select().then(function (migrations) {
       moviesMigration = migrations[0].name.split('_');
       assert.equal(moviesMigration[1], 'create');
