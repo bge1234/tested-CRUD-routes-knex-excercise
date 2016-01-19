@@ -6,21 +6,21 @@ var server = require('../app');
 chai.use(chaiHttp);
 
 describe('Reviews CRUD Routes', function() {
-  xit('should GET /movies/:movie_id/reviews', function (done) {
+  it('should GET /movies/:movie_id/reviews', function (done) {
     chai.request(server).get('/movies/1/reviews')
     .end(function (err, res) {
       res.should.have.status(200);
       done();
     });
   });
-  xit('should GET /movies/:movie_id/reviews/new', function (done) {
+  it('should GET /movies/:movie_id/reviews/new', function (done) {
     chai.request(server).get('/movies/2/reviews/new')
     .end(function (err, res) {
       res.should.have.status(200);
       done();
     });
   });
-  xit('should POST /movies/:movie_id/reviews', function (done) {
+  it('should POST /movies/:movie_id/reviews', function (done) {
     chai.request(server).post('/movies/3/reviews')
     .end(function (err, res) {
       res.should.have.status(200);
